@@ -12,6 +12,12 @@ campoResultado.textContent = palavrasChave.join(", ");
 
 function processaTexto(texto){
     let palavras = texto.split(/\P{L}+/u);
+    for(let i in palavras){
+        palavras[i] = palavras[i].toLowerCase();
+    }
+    
+    palavras = tiraPalavrasRuins(palavras);
+
     const frequencias = contaFrequencias(palavras);
     let ordenadas = Object.Keys(frequencias).sort(ordenaPalavra);
 
@@ -34,4 +40,16 @@ function contaFrequencias(palavras){
        return frequencias;
     }
     
+}
+
+
+function tiraPalavrasRuins(palavras){
+    const PALAVRAS RUINS = new Set (["para", "uma", "nós"]);
+    const palavrasBoas = [];
+    for (let palavra of palavras){
+        if(!PALAVRAS_RUINS.has(palavra) && palavra.length > 2){
+         palavrasBoas.push(palavras);
+        }
+    } 
+    return palavrasBoas;
 }
